@@ -12,9 +12,10 @@ const studentsRouter = Router();
 
 //Pegando todos os Stundets que existem
 studentsRouter.get('/', async (req, res) => {
- 
+    const {skipPagination, takeMax} = req.body
+
     const StudentsService = new AllStudentsService()
-    const AllStudent = await StudentsService.execute()
+    const AllStudent = await StudentsService.execute({skipPagination, takeMax})
     return res.json(AllStudent)
 })
 
