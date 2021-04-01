@@ -12,3 +12,8 @@ export interface SearchStudentsInterface {
     skipPagination: number;
     takeMax: number;
 }
+
+export interface AllStudentsInterface{
+    skipPagination: number;
+    takeMax: number;
+}
