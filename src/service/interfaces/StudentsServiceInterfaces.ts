@@ -18,7 +18,7 @@ export interface AllStudentsInterface{
     takeMax: number;
 }
 
-export interface SpecificStudentsService{
+export interface SpecificStudentsIntrface{
     create_user_id: string;
     skipPagination: number;
     takeMax: number;
