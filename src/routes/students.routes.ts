@@ -6,6 +6,7 @@ import ensureAuth from '../middlewares/ensureAuth';
 import StudentsService from '../service/CreateStudentsService'
 import SearchStudentsService from '../service/SearchStudentsService'
 import AllStudentsService from '../service/AllStudentService'
+import SpecificStudentsService from '../service/specificStudentsService'
 
 const studentsRouter = Router();
 
@@ -22,6 +23,7 @@ studentsRouter.get('/', async (req, res) => {
 studentsRouter.get('/search', async (req, res)=>{
 
     const {searchParameters, skipPagination, takeMax} = req.body
+
     const StudentsService = new SearchStudentsService()
     const searchResults = await StudentsService.execute({searchParameters, skipPagination, takeMax})
 
@@ -30,10 +32,12 @@ studentsRouter.get('/search', async (req, res)=>{
 
 //Pegando todos os Students de um unico usuario 
 studentsRouter.get('/specific/:create_user_id',ensureAuth, async (req, res) => {
-    const studentsRepository = getRepository(Students)
 
     const {create_user_id} = req.params
-    const SpecificStudents = await studentsRepository.find({where:{create_user_id}})
+    
+    const StudentsService = new SpecificStudentsService()
+    const SpecificStudents = await StudentsService.execute()
+
 
     return res.json(SpecificStudents)
 })
