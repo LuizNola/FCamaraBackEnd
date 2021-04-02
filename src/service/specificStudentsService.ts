@@ -19,7 +19,9 @@ class SpecificStudentsService{
         let element = []
 
         for (let index = 0; index < takeMax; index++) {
+            if(SpecificStudents[index] != null){
              element.push(SpecificStudents[index]) 
+            }
         }
 
          if(Math.round(SpecificStudents.length/takeMax) < SpecificStudents.length/takeMax ){

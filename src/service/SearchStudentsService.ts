@@ -22,7 +22,9 @@ class SearchStudentsService{
             let element = []
 
             for (let index = 0; index < takeMax; index++) {
+                if(searchResults[index] != null){
                  element.push(searchResults[index]) 
+                }
             }
 
              if(Math.round(searchResults.length/takeMax) < searchResults.length/takeMax ){

@@ -5,7 +5,6 @@ import routes from './routes';
 const cors = require('cors');
 
 const app = express();
-
 import './database'
 
 //Lendo os dados recebidos em JSON
