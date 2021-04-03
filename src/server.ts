@@ -1,9 +1,9 @@
 //arquivo para iniciar o servidor
-import express, { Request, Response, NextFunction, response } from 'express'
+import express, { Request, Response, NextFunction } from 'express'
 import 'express-async-errors'
 import routes from './routes';
 const cors = require('cors');
-import AppError from './errors/apperror'
+import AppError from './errors/AppError'
 
 const app = express();
 import './database'

@@ -2,7 +2,7 @@ import { getRepository } from 'typeorm'
 import { hash } from 'bcryptjs'
 
 import User from '../database/models/User'
-import AppError from '../errors/apperror' 
+import AppError from '../errors/AppError' 
 import {CreateUserInterface} from './interfaces/UserServiceInterfaces'
 
 class CreateUserService{

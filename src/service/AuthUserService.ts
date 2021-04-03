@@ -4,7 +4,7 @@ import { sign } from 'jsonwebtoken'
 //variaveis de configuração
 import authConfig from '../config/auth'
 
-import AppError from '../errors/apperror' 
+import AppError from '../errors/AppError' 
 
 import User from '../database/models/User'
 
