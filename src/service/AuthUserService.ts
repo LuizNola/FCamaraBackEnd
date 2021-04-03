@@ -4,6 +4,8 @@ import { sign } from 'jsonwebtoken'
 //variaveis de configuração
 import authConfig from '../config/auth'
 
+import AppError from '../errors/apperror' 
+
 import User from '../database/models/User'
 
 import {UserAuth, ResponseUserAuth} from './interfaces/UserServiceInterfaces'
@@ -17,13 +19,13 @@ class AuthUserService {
 
         //verificando se o usuario esta devidamente cadastrado
         if(!user){
-            throw new Error('Email ou senha estão incorretos')
+            throw new AppError('Email ou senha estão incorretos', 401)
         };
 
         const passwordMatched = await compare(pass, user.pass);
 
         if(!passwordMatched){
-            throw new Error('Email ou senha estão incorretos')
+            throw new AppError('Email ou senha estão incorretos', 401)
         };
 
         //Fazendo a autenticação do usuario 

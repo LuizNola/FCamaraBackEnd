@@ -2,6 +2,7 @@ import { getRepository } from 'typeorm'
 import { hash } from 'bcryptjs'
 
 import User from '../database/models/User'
+import AppError from '../errors/apperror' 
 import {CreateUserInterface} from './interfaces/UserServiceInterfaces'
 
 class CreateUserService{
@@ -13,7 +14,7 @@ class CreateUserService{
             where: { email }
         })
         if (checkUserExist){
-            throw new Error('O email ja esta em uso.');
+            throw new AppError('O email ja esta em uso.', 401);
         }
 
         //criptografando senha
