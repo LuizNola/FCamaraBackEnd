@@ -18,7 +18,7 @@ sessionRouter.post('/', async (req, res) => {
         //retorna os dados do usuario e a token de login
         return res.json({ user, token });
     }catch(err){
-        return res.status(400).json({erro: err.message});
+        return res.status(err.statusCode).json({erro: err.message});
     }
 })
 
