@@ -58,7 +58,7 @@ studentsRouter.delete('/', ensureAuth,async (req, res) => {
 
 //rota para cadastrar o student
 studentsRouter.post('/', ensureAuth,async (req, res) => {
-    try{ 
+    
         const { create_user_id,
             nome,
             age,
@@ -80,9 +80,7 @@ studentsRouter.post('/', ensureAuth,async (req, res) => {
         });
 
         return res.json(student);
-    }catch(err){
-        return res.status(err.statusCode).json({erro: err.message});
-    }
+    
 })
 
 export default studentsRouter;
