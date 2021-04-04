@@ -12,7 +12,7 @@ const studentsRouter = Router();
 
 
 //Pegando todos os Stundets que existem
-studentsRouter.get('/', async (req, res) => {
+studentsRouter.post('/all', async (req, res) => {
     const {skipPagination, takeMax} = req.body
 
     const StudentsService = new AllStudentsService()
@@ -21,9 +21,9 @@ studentsRouter.get('/', async (req, res) => {
 })
 
 //Pegando um unico student 
-studentsRouter.get('/unique', async (req, res) => {
+studentsRouter.get('/unique/:id', async (req, res) => {
 
-    const {id} = req.body
+    const {id} = req.params
     const studentsRepository = getRepository(Students)
    
     const UniqueStudent = await studentsRepository.find({where: {id}})
@@ -32,7 +32,7 @@ studentsRouter.get('/unique', async (req, res) => {
 })
 
 //pesquisando por Stundents
-studentsRouter.get('/search', async (req, res)=>{
+studentsRouter.post('/search', async (req, res)=>{
 
     const {searchParameters, skipPagination, takeMax} = req.body
 
@@ -43,7 +43,7 @@ studentsRouter.get('/search', async (req, res)=>{
 })
 
 //Pegando todos os Students de um unico usuario 
-studentsRouter.get('/specific',ensureAuth, async (req, res) => {
+studentsRouter.post('/specific',ensureAuth, async (req, res) => {
 
     const {create_user_id, skipPagination, takeMax } = req.body
    
