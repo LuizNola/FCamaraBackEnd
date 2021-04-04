@@ -3,6 +3,8 @@ import { verify } from 'jsonwebtoken'
 
 import authConfig from '../config/auth'
 
+import AppError from '../errors/AppError' 
+
 interface TokenPayload {
     iat: number,
     exp: number,
@@ -19,7 +21,7 @@ export default function ensureAuth(
 
     //Vefificando se o usuario esta autenticado
     if(!authHeader){
-        throw new Error("O token JWT esta faltando")
+        throw new AppError("O token JWT esta faltando", 401)
     }   
 
     const [, token] = authHeader.split(' ');
@@ -36,7 +38,7 @@ export default function ensureAuth(
         //seguindo para a rota
         return next();
     }catch{
-        throw new Error('O token JWT e invalido')
+        throw new AppError('O token JWT e invalido', 401)
     }
 
 }

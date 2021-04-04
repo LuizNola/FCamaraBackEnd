@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { getRepository, Like } from 'typeorm'
+import { getRepository } from 'typeorm'
 import Students from '../database/models/Students'
 import ensureAuth from '../middlewares/ensureAuth';
 
@@ -20,6 +20,18 @@ studentsRouter.get('/', async (req, res) => {
     return res.json(AllStudent)
 })
 
+//Pegando um unico student 
+studentsRouter.get('/unique', async (req, res) => {
+
+    const {id} = req.body
+    const studentsRepository = getRepository(Students)
+   
+    const UniqueStudent = await studentsRepository.find({where: {id}})
+
+    return res.json(UniqueStudent)
+})
+
+//pesquisando por Stundents
 studentsRouter.get('/search', async (req, res)=>{
 
     const {searchParameters, skipPagination, takeMax} = req.body
@@ -58,7 +70,7 @@ studentsRouter.delete('/', ensureAuth,async (req, res) => {
 
 //rota para cadastrar o student
 studentsRouter.post('/', ensureAuth,async (req, res) => {
-    try{ 
+    
         const { create_user_id,
             nome,
             age,
@@ -80,9 +92,7 @@ studentsRouter.post('/', ensureAuth,async (req, res) => {
         });
 
         return res.json(student);
-    }catch(err){
-        return res.status(400).json({erro: err.message});
-    }
+    
 })
 
 export default studentsRouter;
