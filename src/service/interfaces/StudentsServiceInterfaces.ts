@@ -5,6 +5,8 @@ export interface CreateStudentInterface {
     address: string;
     material_list: string;
     contact: string;
+    Details: string;
+    report: string;
 }
 
 export interface SearchStudentsInterface {
