@@ -30,6 +30,12 @@ class Students {
 
     @Column()
     contact: string
+
+    @Column()
+    Details: string
+
+    @Column()
+    report: string
 }
 
 export default Students;
