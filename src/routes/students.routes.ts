@@ -76,7 +76,9 @@ studentsRouter.post('/', ensureAuth,async (req, res) => {
             age,
             address,
             material_list,
-            contact
+            contact,
+            Details,
+            report
         } = req.body; 
 
         //Service com as regras de negocio 
@@ -88,7 +90,9 @@ studentsRouter.post('/', ensureAuth,async (req, res) => {
             age,
             address,
             material_list,
-            contact
+            contact,
+            Details,
+            report
         });
 
         return res.json(student);
