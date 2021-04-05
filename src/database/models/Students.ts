@@ -17,7 +17,7 @@ class Students {
     user: User;
 
     @Column()
-    age: number;
+    age: string;
 
     @Column()
     address: string;
