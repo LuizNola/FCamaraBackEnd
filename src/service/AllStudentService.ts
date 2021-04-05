@@ -8,7 +8,7 @@ class AllStudentsService{
     public async execute(  
         { 
             skipPagination = 0, 
-            takeMax = 1,
+            takeMax = 10,
         }:AllStudentsInterface)
         {
             const studentsRepository = getRepository(Students)

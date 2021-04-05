@@ -17,7 +17,7 @@ class Students {
     user: User;
 
     @Column()
-    age: number;
+    age: string;
 
     @Column()
     address: string;
@@ -30,6 +30,12 @@ class Students {
 
     @Column()
     contact: string
+
+    @Column()
+    Details: string
+
+    @Column()
+    report: string
 }
 
 export default Students;
